@@ -9,6 +9,8 @@
   "author": "Joel Tavarez",
   "license": "ISC",
   "dependencies": {
-    "angular-ui-router": "^1.0.20"
+    "angular-ui-router": "^1.0.20",
+    "live-server": "^1.2.1",
+    "webcam": "^3.2.1"
   }
 }

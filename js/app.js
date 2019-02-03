@@ -1,4 +1,4 @@
-var app = angular.module('moviesApp', ['ui.router'])
+var app = angular.module('moviesApp', ['ui.router', 'webcam'])
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/dashboard');

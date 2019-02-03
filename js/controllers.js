@@ -1,6 +1,23 @@
-app.controller('appCtrl', ["$scope", function($scope) { }])
+app.controller('appCtrl', ["$scope", "WebcamService", function($scope, WebcamService) {
+	/*$scope.showweb = true;
+	$scope.camera = WebcamService.webcam;
+	$scope.photo = '';
+	$scope.contentType = '';
 
-app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, $http, $filter) {
+	$scope.camera.success = function(image, type) {
+		$scope.photo = image;
+		$scope.contentType = type;
+		$scope.showweb = false;
+	}
+
+	$scope.turnOffCamera = function() {
+		if($scope.camera && $scope.camera.isTurnOn == true) {
+			$scope.camera.turnOff();	
+		}
+	}*/
+}])
+
+app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, $http, $filter, MyCache) {
 
 	$scope.movies = [];
 	$scope.filtered = [];
@@ -9,7 +26,7 @@ app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, 
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/movies/')
+		$http.get('http://varnatrd.tech/api/movies/', { cache: MyCache })
 		.then(function success(movies){
 			$scope.movies = movies.data;
 			console.log($scope.movies);
@@ -63,7 +80,7 @@ app.filter('startFrom', function() {
     }
 })
 
-app.controller('seriesCtrl', ["$scope", "$http", "$filter", function($scope, $http, $filter) {
+app.controller('seriesCtrl', ["$scope", "$http", "$filter", function($scope, $http, $filter, MyCache) {
 
 	$scope.series = [];
 	$scope.currentPage = 0;
@@ -72,7 +89,7 @@ app.controller('seriesCtrl', ["$scope", "$http", "$filter", function($scope, $ht
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/series')
+		$http.get('http://varnatrd.tech/api/series', { cache: MyCache })
 		.then(function success(series){
 			$scope.series = series.data;
 			$scope.filtered = $scope.series;
