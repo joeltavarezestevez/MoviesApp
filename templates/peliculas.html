@@ -1,0 +1,51 @@
+<div class="content-wrapper" ng-init="init()">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+      <a class="navbar-brand" href="#">Movies APP</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#!/dashboard">Inicio</a>
+          </li>        	
+          <li class="nav-item active">
+            <a class="nav-link" href="#!/peliculas">Peliculas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#!/series">Series</a>
+          </li>
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar" ng-model="buscar">
+          <select ng-model="pageSize" id="pageSize" class="form-control">
+          	<option value="6">6</option>
+          	<option value="12">12</option>
+          	<option value="18">18</option>
+          	<option value="24">24</option>
+          </select>          
+        </form>
+      </div>
+    </nav>
+	<div class="container-fluid">
+		<loading></loading>
+		<div class="text-right">
+			{{movies.length}} peliculas en total. Mostrando de {{pageSize*(currentPage+1) - pageSize+1}} a {{pageSize*(currentPage+1)}}
+			<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-primary"><span aria-hidden="true">&laquo;</span></button> {{currentPage+1}}/{{numberOfPages()}}
+			<button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary"><span aria-hidden="true">&raquo;</span></button>
+		</div>
+		<div class="row text-center">
+			<div class="card primary" ng-repeat="movie in movies | filter:buscar | startFrom:currentPage*pageSize | limitTo:pageSize">
+				<a href="#!/peliculas/{{movie._id}}" class="nounderline">
+					<img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
+				    <div class="card-body text-muted">
+				      <h5 class="card-title">{{movie.title}}</h5>
+				      <p class="card-text">{{movie.actors}}</p>
+				      <p class="card-text"><small class="text-muted">{{movie.year}}</small></p>
+				    </div>
+			    </a>
+			</div>
+		</div>
+		<div>&nbsp;</div>
+	</div>
+</div>
