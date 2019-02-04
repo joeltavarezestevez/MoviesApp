@@ -18,7 +18,7 @@ app.controller('appCtrl', ["$scope", "WebcamService", function($scope, WebcamSer
 }])
 
 app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, $http, $filter, MyCache) {
-
+	console.time('peliculasLoader');
 	$scope.movies = [];
 	$scope.filtered = [];
 	$scope.currentPage = 0;
@@ -31,6 +31,7 @@ app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, 
 			$scope.movies = movies.data;
 			console.log($scope.movies);
 			$scope.loading = false;
+			console.timeEnd('peliculasLoader');
 		}
 		, function error(error){
 			console.log(error)
