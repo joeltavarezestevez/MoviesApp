@@ -1,15 +1,7 @@
-/*var jsonServer  = require('json-server');
-var server      = jsonServer.create();
-//var router      = jsonServer.router('./db.js');
-var router      = jsonServer.router(require('./db.js')());
-var middlewares = jsonServer.defaults();
+var express = require('express');
+var app = express();
 
-server.use(middlewares)
-server.use(router)
-server.listen(3000, function () {
-  console.log('JSON Server is running')
-})*/
-var liveServer = require("live-server");
-liveServer.start(function() {
-	console.log('Server is running');
-});
+app.use(express.static(__dirname));
+
+app.listen('3000');
+console.log('working on 3000');

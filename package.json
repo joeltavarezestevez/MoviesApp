@@ -2,9 +2,9 @@
   "name": "iptv-web-app",
   "version": "1.0.0",
   "description": "Movies & Series App",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joel Tavarez",
@@ -13,5 +13,8 @@
     "angular-ui-router": "^1.0.20",
     "live-server": "^1.2.1",
     "webcam": "^3.2.1"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
