@@ -26,7 +26,7 @@ app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, 
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/movies/', { cache: MyCache })
+		$http.get('https://varnatrd.tech/api/movies/', { cache: MyCache })
 		.then(function success(movies){
 			$scope.movies = movies.data;
 			console.log($scope.movies);
@@ -61,7 +61,7 @@ app.controller('peliculasDetallesCtrl', ["$scope", "$http", '$stateParams', func
 
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/movies/' + $stateParams.id)
+		$http.get('https://varnatrd.tech/api/movies/' + $stateParams.id)
 		.then(function success(movie){
 			$scope.movie = movie.data;
 			console.log($scope.movie);
@@ -90,7 +90,7 @@ app.controller('seriesCtrl', ["$scope", "$http", "$filter", function($scope, $ht
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/series', { cache: MyCache })
+		$http.get('https://varnatrd.tech/api/series', { cache: MyCache })
 		.then(function success(series){
 			$scope.series = series.data;
 			$scope.filtered = $scope.series;
@@ -129,7 +129,7 @@ app.controller('seriesDetallesCtrl', ["$scope", "$http", '$stateParams', '$filte
 
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('http://varnatrd.tech/api/series/all_episode_favorite/' + $stateParams.id)
+		$http.get('https://varnatrd.tech/api/series/all_episode_favorite/' + $stateParams.id)
 		.then(function success(serie){
 			$scope.serie = serie.data;
 			serie.data.episodes.forEach(episodio => {
