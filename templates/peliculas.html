@@ -44,7 +44,7 @@
       </div>
     </div>
 		<div class="row text-center">
-			<div class="card primary" ng-repeat="movie in movies | filter:buscar | startFrom:currentPage*pageSize | limitTo:pageSize">
+			<div class="card primary" ng-repeat="movie in movies | filter:buscar | orderBy: '-dateCreate' | startFrom:currentPage*pageSize | limitTo:pageSize">
 				<a href="#!/peliculas/{{movie._id}}" class="nounderline">
 					<img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
 				    <div class="card-body text-muted">
