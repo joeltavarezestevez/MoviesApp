@@ -29,11 +29,20 @@
     </nav>
 	<div class="container-fluid">
 		<loading></loading>
-		<div class="text-right">
-			{{movies.length}} peliculas en total. Mostrando de {{pageSize*(currentPage+1) - pageSize+1}} a {{pageSize*(currentPage+1)}}
-			<button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-primary"><span aria-hidden="true">&laquo;</span></button> {{currentPage+1}}/{{numberOfPages()}}
-			<button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary"><span aria-hidden="true">&raquo;</span></button>
-		</div>
+    <div class="row">
+      <div class="col-12 col-sm-10 text-right">
+        {{movies.length}} peliculas en total. Mostrando de {{pageSize*(currentPage+1) - pageSize+1}} a {{pageSize*(currentPage+1)}}
+      </div>
+      <div class="col-12 col-sm-2 text-right">
+        <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1" class="btn btn-primary">
+          <span aria-hidden="true">&laquo;</span>
+        </button>
+        {{currentPage+1}}/{{numberOfPages()}}
+        <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1" class="btn btn-primary">
+          <span aria-hidden="true">&raquo;</span>
+        </button>
+      </div>
+    </div>
 		<div class="row text-center">
 			<div class="card primary" ng-repeat="movie in movies | filter:buscar | startFrom:currentPage*pageSize | limitTo:pageSize">
 				<a href="#!/peliculas/{{movie._id}}" class="nounderline">

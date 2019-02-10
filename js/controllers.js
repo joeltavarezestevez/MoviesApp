@@ -90,7 +90,7 @@ app.controller('seriesCtrl', ["$scope", "$http", "$filter", function($scope, $ht
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('https://varnatrd.tech/api/series', { cache: MyCache })
+		$http.get('https://varnatrd.tech/api/series/', { cache: MyCache })
 		.then(function success(series){
 			$scope.series = series.data;
 			$scope.filtered = $scope.series;
