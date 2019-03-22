@@ -1,5 +1,5 @@
 <div class="content-wrapper" ng-init="init()">
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
       <a class="navbar-brand" href="#">Movies APP</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link" href="#!/dashboard">Inicio</a>
-          </li>        	
+          </li>         
           <li class="nav-item active">
             <a class="nav-link" href="#!/peliculas">Peliculas</a>
           </li>
@@ -19,16 +19,16 @@
         <form class="form-inline mt-2 mt-md-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Buscar" aria-label="Buscar" ng-model="buscar" ng-model-options="{debounce: 500}">
           <select ng-model="pageSize" id="pageSize" class="form-control">
-          	<option value="6">6</option>
-          	<option value="12">12</option>
-          	<option value="18">18</option>
-          	<option value="24">24</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="18">18</option>
+            <option value="24">24</option>
           </select>          
         </form>
       </div>
     </nav>
-	<div class="container-fluid">
-		<loading></loading>
+  <div class="container-fluid">
+    <loading></loading>
     <div class="row">
       <div class="col-12 col-sm-10 text-right">
         {{movies.length}} peliculas en total. Mostrando de {{pageSize*(currentPage+1) - pageSize+1}} a {{pageSize*(currentPage+1)}}
@@ -43,22 +43,21 @@
         </button>
       </div>
     </div>
-		<div class="row text-center">
-			<div class="card primary" ng-repeat="movie in movies | filter:buscar | orderBy: '-dateCreate' | startFrom:currentPage*pageSize | limitTo:pageSize">
-				<a href="#!/peliculas/{{movie._id}}" class="nounderline">
-					<img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
-				    <div class="card-body text-muted">
-				      <h5 class="card-title">{{movie.title}}</h5>
-				      <p class="card-text">{{movie.actors}}</p>
-				      <p class="card-text"><small class="text-muted">{{movie.year}}</small></p>
-              <div class="text-right">
-                <img src="img/spanish_icon.png" ng-if="movie.audioSpa" width="32px" />
-                <img src="img/english_icon.png" ng-if="movie.audioEng" width="32px" />
-              </div>              
-				    </div>
-			    </a>
-			</div>
-		</div>
-		<div>&nbsp;</div>
-	</div>
+    <div class="row text-center">
+      <div class="card primary" ng-repeat="movie in movies | filter:buscar | orderBy: '-dateCreate' | startFrom:currentPage*pageSize | limitTo:pageSize">
+        <a href="#!/peliculas/{{movie._id}}" class="nounderline">
+          <img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
+          <div class="card-body text-muted">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <div class="text-center">
+              <b> <span ng-if="movie.audioSpa"> ESP | </span> <span ng-if="movie.audioEng"> ENG </span> </b>
+            </div>
+            <p class="card-text">{{movie.actors}}</p>
+            <p class="card-text"><small class="text-muted">{{movie.year}}</small></p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div>&nbsp;</div>
+  </div>
 </div>
