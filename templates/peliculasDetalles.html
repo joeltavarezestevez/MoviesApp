@@ -29,6 +29,7 @@
             <p class="card-text text-left"><b>Elenco: </b>{{movie.actors}} <br></p>
             <p class="card-text text-left"><b>Genero: </b><span ng-repeat="genero in movie.genres">{{genero}} | </p>
             <p class="card-text text-left"><b>Duraci&oacute;n: </b>{{movie.runtime}} min.</p>
+            <p class="card-text text-left"><b>Rating: </b>{{movie.rating}}</p>
 			      <a href="{{movie.trailer}}" target="_blank" class="btn btn-info">Ver Trailer</a>
             <a href="{{movie.content[0].link}}" class="btn btn-primary">Ver Pelicula</a>
 			    </div>

@@ -26,7 +26,7 @@ app.controller('peliculasCtrl', ["$scope", "$http", "$filter", function($scope, 
     $scope.buscar = '';
 	$scope.init = function() {
 		$scope.loading = true;
-		$http.get('https://varnatrd.tech/api/movies/', { cache: MyCache })
+		$http.get('https://varnatrd.tech/api/movies')
 		.then(function success(movies){
 			$scope.movies = movies.data;
 			console.log($scope.movies);
