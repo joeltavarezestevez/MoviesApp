@@ -132,6 +132,7 @@ app.controller('seriesDetallesCtrl', ["$scope", "$http", '$stateParams', '$filte
 		$http.get('https://varnatrd.tech/api/series/all_episode_favorite/' + $stateParams.id)
 		.then(function success(serie){
 			$scope.serie = serie.data;
+			console.log($scope.serie);
 			serie.data.episodes.forEach(episodio => {
 				episodio.season = parseInt(episodio.season);
 				$scope.episodios.push(episodio);

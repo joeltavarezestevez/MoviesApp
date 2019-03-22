@@ -25,14 +25,12 @@
 				<img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
 			    <div class="card-body">
 			      <h5 class="card-title">{{movie.title}} ({{movie.year}})</h5>
-            <div class="text-center">
-              <b><span ng-if="movie.audioSpa"> ESP | </span> <span ng-if="movie.audioEng"> ENG </span></b>
-            </div>
+            <p class="text-center"> <b> <span ng-if="movie.audioSpa"> ESP | </span> <span ng-if="movie.audioEng"> ENG </span> </b> </p>
 			      <p class="card-text text-left"><b>Sinopsis: </b>{{movie.synopsis}}</p>
             <p class="card-text text-left"><b>Elenco: </b>{{movie.actors}} <br></p>
             <p class="card-text text-left"><b>Genero: </b><span ng-repeat="genero in movie.genres">{{genero}} | </p>
             <p class="card-text text-left"><b>Duraci&oacute;n: </b>{{movie.runtime}} min.</p>
-            <p class="card-text text-left"><b>Rating: </b>{{movie.rating}}</p>
+            <p class="card-text text-left"><b>Rating: </b>{{movie.rating | number:1}}/10</p>
 			      <a href="{{movie.trailer}}" target="_blank" class="btn btn-info">Ver Trailer</a>
             <a href="{{movie.content[0].link}}" class="btn btn-primary">Ver Pelicula</a>
 			    </div>
