@@ -51,6 +51,10 @@
 				      <h5 class="card-title">{{movie.title}}</h5>
 				      <p class="card-text">{{movie.actors}}</p>
 				      <p class="card-text"><small class="text-muted">{{movie.year}}</small></p>
+              <div class="card-text text-right">
+                <img src="img/spanish_icon.png" ng-if="movie.audioSpa" width="32px" />
+                <img src="img/english_icon.png" ng-if="movie.audioEng" width="32px" />
+              </div>              
 				    </div>
 			    </a>
 			</div>
