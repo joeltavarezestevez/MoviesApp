@@ -25,6 +25,10 @@
 				<img ng-src="{{movie.covertImage}}" class="card-img-top" alt="{{movie.title}}" style="width: 10em;">
 			    <div class="card-body">
 			      <h5 class="card-title">{{movie.title}} ({{movie.year}})</h5>
+            <div class="card-text">
+              <img src="img/spanish_icon.png" ng-if="movie.audioSpa" width="32px" />
+              <img src="img/english_icon.png" ng-if="movie.audioEng" width="32px" />
+            </div>
 			      <p class="card-text text-left"><b>Sinopsis: </b>{{movie.synopsis}}</p>
             <p class="card-text text-left"><b>Elenco: </b>{{movie.actors}} <br></p>
             <p class="card-text text-left"><b>Genero: </b><span ng-repeat="genero in movie.genres">{{genero}} | </p>
